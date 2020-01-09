@@ -1,4 +1,4 @@
-package com.example.freelanceapp.ui.send
+package com.linkedin.freelanceapp.ui.send
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

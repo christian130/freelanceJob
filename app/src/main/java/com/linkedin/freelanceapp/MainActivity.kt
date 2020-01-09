@@ -1,4 +1,4 @@
-package com.example.freelanceapp
+package com.linkedin.freelanceapp
 
 import android.os.Bundle
 import com.google.android.material.floatingactionbutton.FloatingActionButton

@@ -1,4 +1,4 @@
-package com.example.freelanceapp
+package com.linkedin.freelanceapp
 
 import org.junit.Test
 
