@@ -13,6 +13,16 @@ import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import android.view.Menu
+import com.linkedin.freelanceapp.models.DTO.ImplSrvIntAll
+import com.linkedin.freelanceapp.models.DTO.remotes.MainDTOClasses
+
+import okhttp3.OkHttpClient
+import okhttp3.Response
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,8 +36,36 @@ class MainActivity : AppCompatActivity() {
 
         val fab: FloatingActionButton = findViewById(R.id.fab)
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+            //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+             //       .setAction("Action", null).show()/*
+            var  logging = HttpLoggingInterceptor();
+            logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+            var httpClient = OkHttpClient.Builder();
+            httpClient.addInterceptor(logging);
+            var rest =  Retrofit.Builder()
+                .baseUrl("http://randomuser.me")
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(httpClient.build())
+                .build();
+            var api = rest.create(ImplSrvIntAll::class.java);
+            var llamada = api.Login();
+            //cuentaIndividualResponse = new ResponseCuentaIndividual[1];
+            llamada.enqueue(object: Callback<MainDTOClasses> {
+                override fun onFailure(call: Call<MainDTOClasses>, t: Throwable) {
+                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                }
+
+                override fun onResponse(
+                    call: Call<MainDTOClasses>,
+                    response: retrofit2.Response<MainDTOClasses>
+                ) {
+
+                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                }
+
+
+            })
+
         }
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
