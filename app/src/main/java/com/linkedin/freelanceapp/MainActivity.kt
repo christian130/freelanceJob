@@ -61,7 +61,8 @@ class MainActivity : AppCompatActivity() {
                     call: Call<MainDTOClasses>,
                     response: retrofit2.Response<MainDTOClasses>
                 ) {
-                    var vvv=response.body();
+                    var cc=response.body()!!
+
 
                     if (response.isSuccessful()){
                         Toast.makeText(ctx,"show this" , Toast.LENGTH_SHORT).show();
