@@ -13,6 +13,7 @@ import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import android.view.Menu
+import android.widget.Toast
 import com.linkedin.freelanceapp.models.DTO.ImplSrvIntAll
 import com.linkedin.freelanceapp.models.DTO.remotes.MainDTOClasses
 
@@ -33,6 +34,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
+        var ctx=this;
 
         val fab: FloatingActionButton = findViewById(R.id.fab)
         fab.setOnClickListener { view ->
@@ -52,15 +54,19 @@ class MainActivity : AppCompatActivity() {
             //cuentaIndividualResponse = new ResponseCuentaIndividual[1];
             llamada.enqueue(object: Callback<MainDTOClasses> {
                 override fun onFailure(call: Call<MainDTOClasses>, t: Throwable) {
-                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                    //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                 }
 
                 override fun onResponse(
                     call: Call<MainDTOClasses>,
                     response: retrofit2.Response<MainDTOClasses>
                 ) {
+                    var vvv=response.body();
 
-                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                    if (response.isSuccessful()){
+                        Toast.makeText(ctx,"show this" , Toast.LENGTH_SHORT).show();
+                    }
+                  //  TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                 }
 
 

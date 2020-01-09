@@ -10,7 +10,7 @@ import retrofit2.http.POST;
 
 public interface ImplSrvIntAll {
 
-    
+
     @GET("api/")
     Call<MainDTOClasses> Login(
     );
